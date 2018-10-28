@@ -82,11 +82,12 @@ while p1_teller < 20:
 # stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
 stack_teller=0
 meter=0
-#doc = {}
+doc = {}
 
 while stack_teller < 20:
    if stack[stack_teller][0:9] == "1-0:1.8.1":
 	print "daldag      ", stack[stack_teller][10:15]
+    doc["daldag"] = stack[stack_teller][10:15]
 	meter = meter +  int(float(stack[stack_teller][10:15]))
    elif stack[stack_teller][0:9] == "1-0:1.8.2":
 	print "piekdag     ", stack[stack_teller][10:15]
@@ -119,6 +120,7 @@ while stack_teller < 20:
    else:
 	pass
    stack_teller = stack_teller +1
+   print json.dumps(doc)
 
 
 #print (stack, "\n")
