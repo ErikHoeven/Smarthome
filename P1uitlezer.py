@@ -112,11 +112,11 @@ while stack_teller < 20:
     elif stack[stack_teller][0:9] == "1-0:2.7.0":
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17])*1000), " W"
 
-else:
-    pass
+    else:
+        pass
 
-stack_teller = stack_teller +1
-print json.dumps(doc)
+    stack_teller = stack_teller +1
+    print json.dumps(doc)
 
 
 #print (stack, "\n")
