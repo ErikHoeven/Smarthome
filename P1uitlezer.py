@@ -79,7 +79,6 @@ while p1_teller < 20:
     p1_teller = p1_teller +1
 
 #Initialize
-# stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
 stack_teller=0
 meter=0
 doc = {}
