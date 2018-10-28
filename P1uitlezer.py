@@ -82,7 +82,7 @@ while p1_teller < 20:
 # stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
 stack_teller=0
 meter=0
-doc = {}
+#doc = {}
 
 while stack_teller < 20: 
     print stack[stack_teller[0:9]
