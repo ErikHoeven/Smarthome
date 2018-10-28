@@ -103,10 +103,10 @@ while stack_teller < 20:
         print "piekterug   ", stack[stack_teller][10:15]
         meter = meter - int(float(stack[stack_teller][10:15]))
 
-# Mijn verbruik was op 23-10-2016 (8850+3247) - (3846+9632) = 12097 - 13478 = 1381
-meter = meter + 1381
-print "meter totaal ", meter, " (afgenomen/teruggeleverd van het net vanaf 23-10-2016)"
-# Huidige stroomafname: 1-0:1.7.0
+    # Mijn verbruik was op 23-10-2016 (8850+3247) - (3846+9632) = 12097 - 13478 = 1381
+    meter = meter + 1381
+    print "meter totaal ", meter, " (afgenomen/teruggeleverd van het net vanaf 23-10-2016)"
+    # Huidige stroomafname: 1-0:1.7.0
     elif stack[stack_teller][0:9] == "1-0:1.7.0":
         print "Afgenomen vermogen      ", int(float(stack[stack_teller][10:17])*1000), " W"
         # Huidig teruggeleverd vermogen: 1-0:1.7.0
