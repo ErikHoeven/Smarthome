@@ -65,18 +65,19 @@ stack=[]
 
 while p1_teller < 20:
     p1_line=''
-#Read 1 line
+    #Read 1 line
     try:
         p1_raw = ser.readline()
     except:
-        sys.exit ("Seriele poort %s kan niet gelezen worden. Programma afgebroken." % ser.name )      
-    p1_str=str(p1_raw)
-    #p1_str=str(p1_raw, "utf-8")
-    p1_line=p1_str.strip()
-    stack.append(p1_line)
+        sys.exit ("Seriele poort %s kan niet gelezen worden. Programma afgebroken." % ser.name )
+
+p1_str=str(p1_raw)
+#p1_str=str(p1_raw, "utf-8")
+p1_line=p1_str.strip()
+stack.append(p1_line)
 # als je alles wil zien moet je de volgende line uncommenten
 #    print (p1_line)
-    p1_teller = p1_teller +1
+p1_teller = p1_teller +1
 
 #Initialize
 stack_teller=0
@@ -119,10 +120,8 @@ while stack_teller < 20:
     print json.dumps(doc)
 
 
-#print (stack, "\n")
-
 #Close port and show status
 try:
-ser.close()
+    ser.close()
 except:
-sys.exit ("Oops %s. Programma afgebroken." % ser.name )
+    sys.exit ("Oops %s. Programma afgebroken." % ser.name )
