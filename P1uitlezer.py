@@ -62,7 +62,7 @@ except:
 # stack is mijn list met de 20 regeltjes.
 p1_teller=0
 stack=[]
-doc = {}
+#doc = {}
 
 while p1_teller < 20:
     p1_line=''
