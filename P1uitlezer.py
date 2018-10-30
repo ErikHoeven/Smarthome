@@ -50,6 +50,8 @@ except:
 # stack is mijn list met de 20 regeltjes.
 p1_teller = 0
 stack = []
+doc = {}
+
 
 while p1_teller < 20:
     p1_line = ''
@@ -74,6 +76,7 @@ meter = 0
 
 while stack_teller < 20:
     if stack[stack_teller][0:9] == "1-0:1.8.1":
+        doc["Daldag"] = stack[stack_teller][10:15]
         print "daldag      ", stack[stack_teller][10:15]
         meter = meter + int(float(stack[stack_teller][10:15]))
     elif stack[stack_teller][0:9] == "1-0:1.8.2":
@@ -107,6 +110,7 @@ while stack_teller < 20:
     else:
         pass
     stack_teller = stack_teller + 1
+    print json.dumps(doc)
 
 # print (stack, "\n")
 
