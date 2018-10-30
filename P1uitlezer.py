@@ -75,6 +75,7 @@ stack_teller = 0
 meter = 0
 
 while stack_teller < 20:
+    doc = {}
     if stack[stack_teller][0:9] == "1-0:1.8.1":
         doc["Daldag"] = stack[stack_teller][10:15]
         print "daldag      ", stack[stack_teller][10:15]
