@@ -84,45 +84,74 @@ p1_teller = p1_teller +1
 stack_teller=0
 meter=0
 
+while p1_teller < 20:
+    p1_line = ''
+    # Read 1 line
+    try:
+        p1_raw = ser.readline()
+    except:
+        sys.exit("Seriele poort %s kan niet gelezen worden. Programma afgebroken." % ser.name)
+    p1_str = str(p1_raw)
+    # p1_str=str(p1_raw, "utf-8")
+    p1_line = p1_str.strip()
+    stack.append(p1_line)
+    # als je alles wil zien moet je de volgende line uncommenten
+    #    print (p1_line)
+    p1_teller = p1_teller + 1
+
+# Initialize
+# stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
+stack_teller = 0
+meter = 0
 
 while stack_teller < 20:
     if stack[stack_teller][0:9] == "1-0:1.8.1":
-        #doc["daldag"] = stack[stack_teller][10:15]
-        print "daldag      ", stack[stack_teller][10:15]
-        meter = meter +  int(float(stack[stack_teller][10:15]))
-    elif stack[stack_teller][0:9] == "1-0:1.8.2":
-        print "piekdag     ", stack[stack_teller][10:15]
+        print
+        "daldag      ", stack[stack_teller][10:15]
         meter = meter + int(float(stack[stack_teller][10:15]))
-        #	print "meter totaal  ", meter
-        # Daltarief, teruggeleverd vermogen 1-0:2.8.1
+    elif stack[stack_teller][0:9] == "1-0:1.8.2":
+        print
+        "piekdag     ", stack[stack_teller][10:15]
+        meter = meter + int(float(stack[stack_teller][10:15]))
+    #	print "meter totaal  ", meter
+    # Daltarief, teruggeleverd vermogen 1-0:2.8.1
     elif stack[stack_teller][0:9] == "1-0:2.8.1":
-        print "dalterug    ", stack[stack_teller][10:15]
+        print
+        "dalterug    ", stack[stack_teller][10:15]
         meter = meter - int(float(stack[stack_teller][10:15]))
     #	print "meter totaal  ", meter
     # Piek tarief, teruggeleverd vermogen 1-0:2.8.2
     elif stack[stack_teller][0:9] == "1-0:2.8.2":
-        print "piekterug   ", stack[stack_teller][10:15]
+        print
+        "piekterug   ", stack[stack_teller][10:15]
         meter = meter - int(float(stack[stack_teller][10:15]))
-
+        # mijn verbruik was op 17-10-2014 1751 kWh teveel teruggeleverd. Nieuw jaar dus opnieuw gaan rekenen
+        #	meter = meter + 1751
+        #        print "meter totaal ", meter, " (afgenomen/teruggeleverd van het net vanaf 17-10-2014)"
         # Mijn verbruik was op 23-10-2016 (8850+3247) - (3846+9632) = 12097 - 13478 = 1381
         meter = meter + 1381
-        print "meter totaal ", meter, " (afgenomen/teruggeleverd van het net vanaf 23-10-2016)"
-        # Huidige stroomafname: 1-0:1.7.0
+        print
+        "meter totaal ", meter, " (afgenomen/teruggeleverd van het net vanaf 23-10-2016)"
+    # Huidige stroomafname: 1-0:1.7.0
     elif stack[stack_teller][0:9] == "1-0:1.7.0":
-        print "Afgenomen vermogen      ", int(float(stack[stack_teller][10:17])*1000), " W"
-        # Huidig teruggeleverd vermogen: 1-0:1.7.0
+        print
+        "Afgenomen vermogen      ", int(float(stack[stack_teller][10:17]) * 1000), " W"
+    # Huidig teruggeleverd vermogen: 1-0:1.7.0
     elif stack[stack_teller][0:9] == "1-0:2.7.0":
-        print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17])*1000), " W"
-
+        print
+        "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
+    # Gasmeter: 0-1:24.3.0
+    elif stack[stack_teller][0:10] == "0-1:24.3.0":
+        print
+        "Gas                     ", int(float(stack[stack_teller + 1][1:10]) * 1000), " dm3"
     else:
         pass
+    stack_teller = stack_teller + 1
 
-    stack_teller = stack_teller +1
-    #print json.dumps(doc)
+# print (stack, "\n")
 
-
-#Close port and show status
+# Close port and show status
 try:
     ser.close()
 except:
-    sys.exit ("Oops %s. Programma afgebroken." % ser.name )
+    sys.exit("Oops %s. Programma afgebroken." % ser.name)
