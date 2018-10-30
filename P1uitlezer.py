@@ -62,6 +62,7 @@ except:
 # stack is mijn list met de 20 regeltjes.
 p1_teller=0
 stack=[]
+doc = {}
 
 while p1_teller < 20:
     p1_line=''
@@ -82,7 +83,7 @@ p1_teller = p1_teller +1
 #Initialize
 stack_teller=0
 meter=0
-doc = {}
+
 
 while stack_teller < 20:
     if stack[stack_teller][0:9] == "1-0:1.8.1":
