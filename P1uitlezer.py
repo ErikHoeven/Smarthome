@@ -51,10 +51,10 @@ except:
 p1_teller = 0
 stack = []
 doc = {}
-doc["Daldag"]
-doc["Piekdag"]
-doc["Dalterug"]
-doc["Piekterug"]
+doc["Daldag"] = ""
+doc["Piekdag"] = ""
+doc["Dalterug"] = ""
+doc["Piekterug"] = ""
 
 
 while p1_teller < 20:
