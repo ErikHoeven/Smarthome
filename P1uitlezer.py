@@ -121,7 +121,7 @@ while stack_teller < 20:
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
 
-        doc["DatumTijdStand"] = now
+        doc["DatumTijdStand"] = str(now)
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
@@ -139,3 +139,5 @@ try:
     ser.close()
 except:
     sys.exit("Oops %s. Programma afgebroken." % ser.name)
+
+
