@@ -87,7 +87,7 @@ meter=0
 
 while stack_teller < 20:
     if stack[stack_teller][0:9] == "1-0:1.8.1":
-        doc["daldag"] = stack[stack_teller][10:15]
+        #doc["daldag"] = stack[stack_teller][10:15]
         print "daldag      ", stack[stack_teller][10:15]
         meter = meter +  int(float(stack[stack_teller][10:15]))
     elif stack[stack_teller][0:9] == "1-0:1.8.2":
