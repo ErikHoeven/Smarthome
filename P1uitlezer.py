@@ -51,10 +51,12 @@ except:
 p1_teller = 0
 stack = []
 doc = {}
-doc["Daldag"] = ""
-doc["Piekdag"] = ""
-doc["Dalterug"] = ""
-doc["Piekterug"] = ""
+doc["DalDag"] = ""
+doc["PiekDag"] = ""
+doc["DalTerug"] = ""
+doc["PiekTerug"] = ""
+doc["AfgenomenVermogen"] = ""
+doc["TeruggeleverdVermogen"] = ""
 
 
 while p1_teller < 20:
@@ -110,9 +112,12 @@ while stack_teller < 20:
     # Huidige stroomafname: 1-0:1.7.0
     elif stack[stack_teller][0:9] == "1-0:1.7.0":
         print "Afgenomen vermogen      ", int(float(stack[stack_teller][10:17]) * 1000), " W"
+        doc["AfgenomenVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
+
     # Huidig teruggeleverd vermogen: 1-0:1.7.0
     elif stack[stack_teller][0:9] == "1-0:2.7.0":
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
+        doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
         print "Gas   ", int(float(stack[stack_teller + 1][1:10]) * 1000), " dm3"
