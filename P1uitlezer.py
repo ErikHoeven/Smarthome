@@ -75,7 +75,11 @@ stack_teller = 0
 meter = 0
 
 while stack_teller < 20:
-    doc = {}
+    doc["Daldag"]
+    doc["Piekdag"]
+    doc["Dalterug"]
+    doc["Piekterug"]
+
     if stack[stack_teller][0:9] == "1-0:1.8.1":
         doc["Daldag"] = stack[stack_teller][10:15]
         print "daldag      ", stack[stack_teller][10:15]
@@ -94,6 +98,7 @@ while stack_teller < 20:
     # Piek tarief, teruggeleverd vermogen 1-0:2.8.2
     elif stack[stack_teller][0:9] == "1-0:2.8.2":
         print "piekterug   ", stack[stack_teller][10:15]
+        doc["Piekterug"] = stack[stack_teller][10:15]
         meter = meter - int(float(stack[stack_teller][10:15]))
         # mijn verbruik was op 17-10-2014 1751 kWh teveel teruggeleverd. Nieuw jaar dus opnieuw gaan rekenen
         #	meter = meter + 1751
