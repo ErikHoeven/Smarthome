@@ -118,7 +118,7 @@ while stack_teller < 20:
         pass
 
     stack_teller = stack_teller +1
-    print json.dumps(doc)
+    #print json.dumps(doc)
 
 
 #Close port and show status
