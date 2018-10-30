@@ -51,6 +51,10 @@ except:
 p1_teller = 0
 stack = []
 doc = {}
+doc["Daldag"]
+doc["Piekdag"]
+doc["Dalterug"]
+doc["Piekterug"]
 
 
 while p1_teller < 20:
@@ -75,10 +79,7 @@ stack_teller = 0
 meter = 0
 
 while stack_teller < 20:
-    doc["Daldag"]
-    doc["Piekdag"]
-    doc["Dalterug"]
-    doc["Piekterug"]
+
 
     if stack[stack_teller][0:9] == "1-0:1.8.1":
         doc["Daldag"] = stack[stack_teller][10:15]
@@ -118,10 +119,10 @@ while stack_teller < 20:
     else:
         pass
     stack_teller = stack_teller + 1
-    print json.dumps(doc)
+
 
 # print (stack, "\n")
-
+print json.dumps(doc)
 # Close port and show status
 try:
     ser.close()
