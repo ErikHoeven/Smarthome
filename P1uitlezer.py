@@ -128,6 +128,7 @@ while stack_teller < 20:
 
 # print (stack, "\n")
 print json.dumps(doc)
+Slimmemeter.insert(doc)
 # Close port and show status
 try:
     ser.close()
