@@ -1,7 +1,7 @@
 import sys
 import serial
 import json
-import time
+import datetime
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -57,7 +57,9 @@ doc["DalTerug"] = ""
 doc["PiekTerug"] = ""
 doc["AfgenomenVermogen"] = ""
 doc["TeruggeleverdVermogen"] = ""
-
+doc["DatumTijdStand"] = ""
+now = datetime.datetime.now()
+print now
 
 while p1_teller < 20:
     p1_line = ''
@@ -118,6 +120,9 @@ while stack_teller < 20:
     elif stack[stack_teller][0:9] == "1-0:2.7.0":
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
+
+        doc["DatumTijdStand"] = now
+
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
         print "Gas   ", int(float(stack[stack_teller + 1][1:10]) * 1000), " dm3"
