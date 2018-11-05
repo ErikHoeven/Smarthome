@@ -10,6 +10,32 @@ from pymongo import MongoClient
 ################
 # Error display #
 ################
+
+
+
+#Maak verbinding met MongoDB
+client = MongoClient("192.168.2.15",27017)
+db = client.commevents
+Slimmemeter =  db.slimmemeter
+
+#################################################################################################################################################
+# ONDERSTUEUNDE FUNCTIES
+################################################################################################################################################
+def default(obj):
+    """Default JSON serializer."""
+    import calendar, datetime
+
+    if isinstance(obj, datetime.datetime):
+        if obj.utcoffset() is not None:
+            obj = obj - obj.utcoffset()
+        millis = int(
+            calendar.timegm(obj.timetuple()) * 1000 +
+            obj.microsecond / 1000
+        )
+        return millis
+    raise TypeError('Not sure how to serialize %s' % (obj,))
+
+
 def show_error():
     ft = sys.exc_info()[0]
     fv = sys.exc_info()[1]
@@ -18,18 +44,12 @@ def show_error():
     return
 
 
-#Maak verbinding met MongoDB
-client = MongoClient("192.168.2.15",27017)
-db = client.commevents
-Slimmemeter =  db.slimmemeter
-
-
 #################################################################################################################################################
-# Main program
+# START APPLICATIE
 ################################################################################################################################################
 print("Slimmemeter uitlezen")
 print (datetime.datetime.now())
-print (datetime.datetime.strptime(str(datetime.datetime.now),'%Y-%m-%d %H:%M:%S'))
+print (json.dumps(datetime.datetime.now(), default=default))
 print("Control-C om te stoppen")
 
 # Set COM port config
