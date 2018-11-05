@@ -2,6 +2,7 @@ import sys
 import serial
 import json
 import datetime
+import time
 from pymongo import MongoClient
 
 
@@ -119,8 +120,8 @@ while stack_teller < 20:
     elif stack[stack_teller][0:9] == "1-0:2.7.0":
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
-
-        doc["DatumTijdStand"] = datetime.datetime.now()
+        ts = time.time()
+        doc["DatumTijdStand"] = datetime.datetime.fromtimestamp(ts, None)
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
