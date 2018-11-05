@@ -21,19 +21,9 @@ Slimmemeter =  db.slimmemeter
 #################################################################################################################################################
 # ONDERSTUEUNDE FUNCTIES
 ################################################################################################################################################
-def default(obj):
-    """Default JSON serializer."""
-    import calendar, datetime
-
-    if isinstance(obj, datetime.datetime):
-        if obj.utcoffset() is not None:
-            obj = obj - obj.utcoffset()
-        millis = int(
-            calendar.timegm(obj.timetuple()) * 1000 +
-            obj.microsecond / 1000
-        )
-        return millis
-    raise TypeError('Not sure how to serialize %s' % (obj,))
+def myconverter(o):
+    if isinstance(o, datetime.datetime):
+        return o.__str__()
 
 
 def show_error():
@@ -48,8 +38,7 @@ def show_error():
 # START APPLICATIE
 ################################################################################################################################################
 print("Slimmemeter uitlezen")
-print (datetime.datetime.now())
-print (json.dumps(datetime.datetime.now(), default=default))
+nu = datetime.datetime.now()
 print("Control-C om te stoppen")
 
 # Set COM port config
@@ -80,7 +69,7 @@ doc["DalTerug"] = ""
 doc["PiekTerug"] = ""
 doc["AfgenomenVermogen"] = ""
 doc["TeruggeleverdVermogen"] = ""
-doc["DatumTijdStand"] = ""
+doc["DatumTijdStand"] = nu
 
 
 while p1_teller < 20:
@@ -144,8 +133,6 @@ while stack_teller < 20:
     elif stack[stack_teller][0:9] == "1-0:2.7.0":
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
-        ts = time.time()
-        doc["DatumTijdStand"] =  json.dump(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
@@ -156,7 +143,7 @@ while stack_teller < 20:
 
 
 # print (stack, "\n")
-print json.dumps(doc)
+print json.dumps(doc, default = myconverter)
 Slimmemeter.insert(doc)
 # Close port and show status
 try:
