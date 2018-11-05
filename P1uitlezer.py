@@ -29,7 +29,7 @@ Slimmemeter =  db.slimmemeter
 ################################################################################################################################################
 print("Slimmemeter uitlezen")
 print (datetime.datetime.now())
-print (datetime.datetime.strptime(datetime.datetime.now,'%Y-%m-%d %H:%M:%S'))
+print (datetime.datetime.strptime(str(datetime.datetime.now),'%Y-%m-%d %H:%M:%S'))
 print("Control-C om te stoppen")
 
 # Set COM port config
