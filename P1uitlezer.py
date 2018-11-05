@@ -145,7 +145,7 @@ while stack_teller < 20:
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
         ts = time.time()
-        doc["DatumTijdStand"] =  json.dump(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
+        doc["DatumTijdStand"] =  json.dump(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
