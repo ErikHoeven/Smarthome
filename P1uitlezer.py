@@ -28,6 +28,7 @@ Slimmemeter =  db.slimmemeter
 # Main program
 ################################################################################################################################################
 print("Slimmemeter uitlezen")
+print (datetime.datetime.utcnow())
 print("Control-C om te stoppen")
 
 # Set COM port config
@@ -82,7 +83,6 @@ while p1_teller < 20:
 stack_teller = 0
 meter = 0
 
-print datetime.datetime.utcnow()
 
 
 while stack_teller < 20:
