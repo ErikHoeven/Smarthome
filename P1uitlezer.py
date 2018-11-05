@@ -58,8 +58,7 @@ doc["PiekTerug"] = ""
 doc["AfgenomenVermogen"] = ""
 doc["TeruggeleverdVermogen"] = ""
 doc["DatumTijdStand"] = ""
-now = datetime.datetime.now()
-print now
+
 
 while p1_teller < 20:
     p1_line = ''
@@ -121,7 +120,7 @@ while stack_teller < 20:
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
 
-        doc["DatumTijdStand"] = str(now)
+        doc["DatumTijdStand"] = datetime.datetime.now()
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
