@@ -5,12 +5,7 @@ import datetime
 import time
 from pymongo import MongoClient
 
-class DateTimeEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, datetime):
-            return o.isoformat()
 
-        return json.JSONEncoder.default(self, o)
 
 ################
 # Error display #
@@ -126,7 +121,7 @@ while stack_teller < 20:
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
         ts = time.time()
-        doc["DatumTijdStand"] =  json.dumps(datetime.datetime.now(), cls=DateTimeEncoder)
+        doc["DatumTijdStand"] =  datetime.datetime.utcnow()
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
