@@ -82,6 +82,9 @@ while p1_teller < 20:
 stack_teller = 0
 meter = 0
 
+print datetime.datetime.utcnow()
+
+
 while stack_teller < 20:
 
 
@@ -121,7 +124,7 @@ while stack_teller < 20:
         print "Teruggeleverd vermogen  ", int(float(stack[stack_teller][10:17]) * 1000), " W"
         doc["TeruggeleverdVermogen"] = int(float(stack[stack_teller][10:17]) * 1000)
         ts = time.time()
-        doc["DatumTijdStand"] =  datetime.datetime.utcnow()
+        doc["DatumTijdStand"] =  datetime.datetime
 
     # Gasmeter: 0-1:24.3.0
     elif stack[stack_teller][0:10] == "0-1:24.3.0":
