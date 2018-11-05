@@ -5,7 +5,12 @@ import datetime
 import time
 from pymongo import MongoClient
 
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, datetime):
+            return o.isoformat()
 
+        return json.JSONEncoder.default(self, o)
 
 ################
 # Error display #
@@ -141,9 +146,3 @@ except:
     sys.exit("Oops %s. Programma afgebroken." % ser.name)
 
 
-class DateTimeEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, datetime):
-            return o.isoformat()
-
-        return json.JSONEncoder.default(self, o)
