@@ -3,6 +3,7 @@ import serial
 import json
 import datetime
 import time
+from datetime import date
 from pymongo import MongoClient
 
 
@@ -39,6 +40,8 @@ def show_error():
 ################################################################################################################################################
 print("Slimmemeter uitlezen")
 nu = datetime.datetime.now()
+vandaag =  date.today()
+print
 print("Control-C om te stoppen")
 
 # Set COM port config
@@ -70,6 +73,11 @@ doc["PiekTerug"] = ""
 doc["AfgenomenVermogen"] = ""
 doc["TeruggeleverdVermogen"] = ""
 doc["DatumTijdStand"] = nu
+doc["Weeknummer"] = vandaag.isocalendar()[1]
+doc["Maandnummer"] = vandaag.month
+doc["DagNummerVanWeek"] = vandaag.weekday()
+doc["DagNummerVanMaand"] = vandaag.day
+
 
 
 while p1_teller < 20:
