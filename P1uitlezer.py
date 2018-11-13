@@ -61,8 +61,7 @@ try:
 except:
     sys.exit("Fout bij het openen van %s. Programma afgebroken." % ser.name)
 
-# Initialize
-# stack is mijn list met de 20 regeltjes.
+
 p1_teller = 0
 stack = []
 doc = {}
