@@ -90,13 +90,13 @@ while p1_teller < 20:
     p1_line = p1_str.strip()
     stack.append(p1_line)
     # als je alles wil zien moet je de volgende line uncommenten
-    #    print (p1_line)
+    print (p1_line)
     p1_teller = p1_teller + 1
 
 # Initialize
-# stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
 stack_teller = 0
 meter = 0
+
 
 while stack_teller < 20:
 
