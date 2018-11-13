@@ -77,14 +77,15 @@ doc["Weeknummer"] = vandaag.isocalendar()[1]
 doc["Maandnummer"] = vandaag.month
 doc["DagNummerVanWeek"] = vandaag.weekday()
 doc["DagNummerVanMaand"] = vandaag.day
+doc["UurvanDag"] = nu.hour
 
+    # Read 1 line
+    try:
+        p1_raw = ser.readline()
 
 
 while p1_teller < 20:
     p1_line = ''
-    # Read 1 line
-    try:
-        p1_raw = ser.readline()
     except:
         sys.exit("Seriele poort %s kan niet gelezen worden. Programma afgebroken." % ser.name)
 
