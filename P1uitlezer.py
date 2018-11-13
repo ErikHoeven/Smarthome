@@ -75,13 +75,13 @@ doc["DagNummerVanWeek"] = vandaag.weekday()
 doc["DagNummerVanMaand"] = vandaag.day
 doc["UurvanDag"] = nu.hour
 
-    # Read 1 line
-    try:
-        p1_raw = ser.readline()
-
 
 while p1_teller < 20:
     p1_line = ''
+
+    try:
+        p1_raw = ser.readline
+
     except:
         sys.exit("Seriele poort %s kan niet gelezen worden. Programma afgebroken." % ser.name)
 
@@ -97,8 +97,6 @@ while p1_teller < 20:
 # stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
 stack_teller = 0
 meter = 0
-
-
 
 while stack_teller < 20:
 
