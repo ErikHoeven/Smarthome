@@ -78,10 +78,9 @@ doc["UurvanDag"] = nu.hour
 
 while p1_teller < 20:
     p1_line = ''
-
+    # Read 1 line
     try:
-        p1_raw = ser.readline
-
+        p1_raw = ser.readline()
     except:
         sys.exit("Seriele poort %s kan niet gelezen worden. Programma afgebroken." % ser.name)
 
@@ -90,13 +89,13 @@ while p1_teller < 20:
     p1_line = p1_str.strip()
     stack.append(p1_line)
     # als je alles wil zien moet je de volgende line uncommenten
-    print (p1_line)
+    #    print (p1_line)
     p1_teller = p1_teller + 1
 
 # Initialize
+# stack_teller is mijn tellertje voor de 20 weer door te lopen. Waarschijnlijk mag ik die p1_teller ook gebruiken
 stack_teller = 0
 meter = 0
-
 
 while stack_teller < 20:
 
@@ -153,5 +152,6 @@ try:
     ser.close()
 except:
     sys.exit("Oops %s. Programma afgebroken." % ser.name)
+
 
 
